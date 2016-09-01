@@ -6,10 +6,10 @@ TARGET = quant01
 RM = rm -f
 
 $(TARGET):$(OBJS)
-	$(CC) -o $(TARGET) $(OBJS) $(CFLAGS)
+	$(CC) -o $@ $^ $(CFLAGS)
 
 $(OBJS):%.o:%.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
-clean : 
+clean: 
 	$(RM) $(TARGET) $(OBJS)
