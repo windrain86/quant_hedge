@@ -1,8 +1,15 @@
-quant01:main.o
-	gcc -o quant01 main.o
 
-main.o : main.c
-	gcc -c main.c
+OBJS = main.o
+CC  = gcc
+CFLAGS = -I./lib -O2
+TARGET = quant01
+RM = rm -f
+
+$(TARGET):$(OBJS)
+	$(CC) -o $(TARGET) $(OBJS) $(CFLAGS)
+
+$(OBJS):%.o:%.c
+	$(CC) -c $(CFLAGS) $< -o $@
 
 clean : 
-	rm quant01 main.o
+	$(RM) $(TARGET) $(OBJS)
